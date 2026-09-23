@@ -1,12 +1,12 @@
 RewriteEngine On
 
-# index.php selalu diizinkan
-RewriteRule ^index\.php$ - [L]
+# Izinkan index.php dan index.html
+RewriteRule ^index\.(php|html)$ - [L,NC]
 
-# Izinkan aset frontend
+# Izinkan CSS, JavaScript, gambar, dan font
 RewriteCond %{REQUEST_URI} \.(css|js|jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|otf)$ [NC]
 RewriteRule ^ - [L]
 
-# Blok akses langsung ke semua FILE lainnya
+# Blok akses langsung ke semua file lainnya
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [F,L]
